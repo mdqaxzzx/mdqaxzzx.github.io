@@ -1,0 +1,90 @@
+<!-- <script type="text/javascript" src="/js/base64.js"></script> -->
+<script type="text/javascript">
+    times = Date.now()
+    time_1 = (times - times % 10000) / 10000;
+    //取到上一页面传过来的参数
+    var $ = $ || {};
+    $.getParam = function (key, strURL) {
+        strURL = strURL || window.location.search;
+        return new RegExp("(^|\\?|&)" + key + "=([^&]*)(\\s|&|$)", "i").test(strURL) ?
+            decodeURIComponent(RegExp.$2.replace(/\+/g, "    ")) : "";
+    };
+
+    //    console.log($.getParam('param'));    //第二个参数不传拿当前window.location    用于普通页面
+    //    console.log($.getParam('param',top.window.location));    //用于包括有iframe的页面,得到的结果是xxx#bbb.html
+    a = $.getParam('user', top.window.location.search);
+    b = $.getParam('are', top.window.location.search);    //用于有iframe的页面，search是指里面的参数，hash是指#后的内容    得到的结果是xxx
+    d = $.getParam('pre', top.window.location.search);
+    c = $.getParam('keep', top.window.location.search);
+
+    // if (a === "" || b === "") {
+    //     alert("还未登录，请登陆后重试！")
+    //     window.location.href = "/";
+    // }
+    ale = Number(a.length)
+    usertimes = a.slice(4, 13)
+    // console.log(usertimes)
+    // console.log(b)
+    users = atob(b)
+    // name = Base64.decode(b);
+    // pre = Base64.decode(d);
+    // returnhref = "/?username=" + Base64.encode(name) + "&pre=" + Base64.encode(pre);
+    // console.log(returnhref);
+    document.write(a + "欢迎您，" + a + "！");
+    document.write("<br>");
+    document.write("当前时间为：" + times + "        " + time_1);
+
+    usertimes = Number(usertimes)
+
+    if (/^\d+$/.test(usertimes) === true) {
+
+        if (usertimes === time_1 || usertimes === (time_1 +1)||usertimes === (times_1 +2)) {
+            document.write("<br    />");
+            document.write("您上次登录时间为：" + usertimes);
+            document.write("<br>");
+            document.write("您上次登录用户名为：" + users);
+            document.write("网址    ：" + top.window.location.href)
+
+            document.write("<br>");
+            //    document.write("您上次登录时间为："    +    usertimes    +    "    正确，欢迎回来！");
+            // location.replace(top.window.location.href + "&keep=true");
+            location.href = "./"+users +"#/user?wife/website/nomeidia/keep/location/notepadef"+users;
+
+        } 
+        // else if ( usertimes === time_1) {
+        //     document.write("<br    />");
+        //     document.write("您上次登录时间为：" + usertimes);
+        //     document.write("<br>");
+        //     document.write("您上次登录用户名为：" + name);
+        //     document.write("网址    ：" + top.window.location.href)
+
+        //     document.write("<br>");
+        //     document.write("您上次登录时间为：" + usertimes + "    正确，欢迎回来！");
+
+        // } 
+        else {
+            document.write("<br>");
+            document.write("您上次登录时间为：" + usertimes + "    可能有误，请重新登录！");
+            // setTimeout(function () {
+            //     location.replace("/");
+            // }, 100);
+        }
+    } else {
+        document.write("<br>");
+        document.write("您还未登录过！");
+    }
+    // if (window.performance.navigation.type === 1) {
+    //     console.log("页面是通过点击链接进入的");
+    //     alert("加载失败，请重新登录！！！")
+    //     location.href = "/";
+
+    // } else if (window.performance.navigation.type == 2) {
+    //     console.log("页面是通过刷新进入的");
+    //     document.write("正常进入");
+    // } else if (window.performance.navigation.type == 255) {
+
+    //     console.log("页面是通过其他方式进入的");
+    //     alert("非正常请求！！！")
+    //     window.location.re = "/";
+    // }
+</script>
